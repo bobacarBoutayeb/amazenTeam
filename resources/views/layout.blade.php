@@ -1,5 +1,12 @@
-@include('partials.header')
+@include('includes.head')
+
+<body>
+
+@include('includes.header')
 
 @yield('content')
 
-@include('partials.footer')
+
+@include('includes.footer')
+</body>
+</html>
