@@ -1,0 +1,21 @@
+.nobg {
+    background-color: #c3e5ae;
+}
+
+footer > div > div > h2{
+font-size: 20px;   
+font-weight: normal;
+}
+
+footer > div > div > form > h2{
+    font-size: 20px;
+    font-weight: normal;   
+    }
+
+.ptblr-5 {
+    padding: 3rem 3rem 0rem 3rem !important;
+}
+
+.bdtoporange {
+    border-top: 1px solid #f08519;
+}

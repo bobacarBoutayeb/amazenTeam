@@ -1,0 +1,55 @@
+.doubleheader
+{
+  background-color: rgba(195, 229, 174, 1);
+}
+.doubleheader .nav-item
+{
+  background-color:rgba(226, 238, 218, 1);
+  padding-bottom: 0%;
+  margin-bottom: 0%;
+}
+.navbar
+{
+  padding: 0%;
+}
+.navlogo
+{
+  width: 120px
+
+}
+
+.nav1
+{
+    width: 40px;
+}
+.nav2
+{
+  width: 60px ; 
+}
+
+.nav3
+{
+  width: 35px ; 
+}
+
+
+  /* début me géolocaliser */
+
+.btn-primary
+{
+    color: black;
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.btn:hover
+{
+    color: black;
+    border: solid 1px black !important;
+}
+
+.btn-primary:focus
+{
+    color:black;
+}
+
