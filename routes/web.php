@@ -15,4 +15,5 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/cart', [Controllers\CartController::class, 'cart']);
+Route::get('/cart', [Controllers\CartController::class, 'cart']) ;
+
