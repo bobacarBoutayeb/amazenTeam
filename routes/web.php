@@ -15,6 +15,10 @@ use App\Http\Controllers;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/product', [Controllers\ProductController::class, "display"]);
 Route::get('/product/{id}', [Controllers\ProductController::class, 'displayID'])
     ->where('id', '[0-9]+')
     ->name('productDetails');
