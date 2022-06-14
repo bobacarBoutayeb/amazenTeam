@@ -15,17 +15,15 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/cart', [Controllers\CartController::class, "DisplayCart"]);
+Route::get('/', Controllers\HomeController::class)
+    ->name('index');
 
-Route::get('/product', [Controllers\ProductController::class, "display"]);
+Route::get('/cart', [Controllers\CartController::class, "displayCart"])
+    ->name('cart');
+
+Route::get('/product', [Controllers\ProductController::class, "displayProducts"])
+    ->name('displayProducts');
 
 Route::get('/product/{id}', [Controllers\ProductController::class, 'displayID'])
     ->where('id', '[0-9]+')
     ->name('productDetails');
-
-
-Route::get('/cart', [Controllers\CartController::class, 'cart'])
-    ->name('displayCart');

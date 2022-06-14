@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 class CartController extends Controller
 {
-    public function Displaycart()
+    public function displayCart()
     {
         return view('cart');
     }
