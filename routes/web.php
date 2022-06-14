@@ -18,3 +18,7 @@ use App\Http\Controllers;
 Route::get('/product/{id}', [Controllers\ProductController::class, 'displayID'])
     ->where('id', '[0-9]+')
     ->name('productDetails');
+
+
+Route::get('/cart', [Controllers\CartController::class, 'cart'])
+    ->name('displayCart');
