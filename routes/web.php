@@ -21,7 +21,10 @@ Route::get('/', Controllers\HomeController::class)
 Route::get('/cart', [Controllers\CartController::class, "displayCart"])
     ->name('cart');
 
-Route::get('/product', [Controllers\ProductController::class, "displayProducts"])
+Route::post('/order', [Controllers\CartController::class, "placeOrder"])
+    ->name('order-place');
+
+Route::get('/products', [Controllers\ProductController::class, "displayProducts"])
     ->name('displayProducts');
 
 Route::get('/product/{id}', [Controllers\ProductController::class, 'displayID'])
