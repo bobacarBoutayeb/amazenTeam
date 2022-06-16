@@ -2,11 +2,12 @@
 
 <body>
 
-@include('includes.header')
+    @include('includes.header')
 
-@yield('content')
+    @yield('content')
 
 
-@include('includes.footer')
+    @include('includes.footer')
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
 </body>
 </html>

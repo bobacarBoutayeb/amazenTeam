@@ -18,15 +18,18 @@ use App\Http\Controllers;
 Route::get('/', Controllers\HomeController::class)
     ->name('index');
 
-Route::get('/cart', [Controllers\CartController::class, "displayCart"])
-    ->name('cart');
+Route::get('/cart', [Controllers\CartController::class, "showCart"])
+    ->name('cart.show');
 
 Route::post('/order', [Controllers\CartController::class, "placeOrder"])
-    ->name('order-place');
+    ->name('order.store');
 
-Route::get('/products', [Controllers\ProductController::class, "displayProducts"])
-    ->name('displayProducts');
+Route::get('/products', [Controllers\ProductController::class, "showAllByName"])
+    ->name('products.showByName');
 
-Route::get('/product/{id}', [Controllers\ProductController::class, 'displayID'])
+Route::get('/products/asc', [Controllers\ProductController::class, "showAllByPrice"])
+    ->name('products.showByPrice');
+
+Route::get('/products/{id}', [Controllers\ProductController::class, 'showOneById'])
     ->where('id', '[0-9]+')
-    ->name('productDetails');
+    ->name('products.showOneById');
