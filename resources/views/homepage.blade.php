@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('includes.homepage.layout')
 
 @section('content')
     <h1>Homepage</h1>

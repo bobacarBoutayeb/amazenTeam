@@ -42,6 +42,8 @@ Route::prefix('products')->name('products.')->group(function () {
 });
 
 Route::prefix('backoffice')->name('backoffice.')->group(function () {
-    Route::get('/', [Controllers\AdminController::class, 'index'])
+    Route::get('/', [Controllers\BackofficeController::class, 'homepage'])
+        ->name('homepage');
+    Route::get('/products', [Controllers\BackofficeController::class, 'index'])
         ->name('index');
 });
