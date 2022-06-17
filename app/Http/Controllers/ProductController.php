@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function displayProducts()
+    public function indexByName()
     {
-        $products = DB::select('select * from products');
-
-        return view('product-list', ['products' => $products]);
+        return view('product.index', ['products' => Product::orderBy('name')->get()]);
     }
 
-    public function displayID(int $id)
+    public function indexByPrice()
     {
-        return view('product-details', ['id' => $id]);
+        return view('product.index', ['products' => Product::orderBy('price')->get()]);
+    }
 
+    public function show(Product $product)
+    {
+        return view('product.show', ['product' => $product]);
     }
 }

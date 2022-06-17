@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 
@@ -16,17 +18,27 @@ use App\Http\Controllers;
 */
 
 Route::get('/', Controllers\HomeController::class)
-    ->name('index');
+    ->name('homepage');
 
-Route::get('/cart', [Controllers\CartController::class, "displayCart"])
-    ->name('cart');
+Route::get('/cart', [CartController::class, "showCart"])
+    ->name('cart.show');
 
-Route::post('/order', [Controllers\CartController::class, "placeOrder"])
-    ->name('order-place');
+Route::post('/order', [CartController::class, "placeOrder"])
+    ->name('order.store');
 
-Route::get('/products', [Controllers\ProductController::class, "displayProducts"])
-    ->name('displayProducts');
+Route::prefix('products')->name('products.')->group(function () {
+    Route::get('/', [ProductController::class, "indexByName"])
+        ->name('index-by-name');
 
-Route::get('/product/{id}', [Controllers\ProductController::class, 'displayID'])
-    ->where('id', '[0-9]+')
-    ->name('productDetails');
+    Route::get('/asc', [ProductController::class, "indexByPrice"])
+        ->name('index-by-price');
+
+    Route::get('/{product}', [ProductController::class, 'show'])
+        ->where('product', '[0-9]+')
+        ->name('show')
+        ->missing(function ()
+        {
+            return redirect('/products');
+        });
+});
+

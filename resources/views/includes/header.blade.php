@@ -1,7 +1,7 @@
 <div class="doubleheader">
     <div class="container-fluid">
         <header class="d-flex flex-wrap align-items-center justify-content-around justify-content-md-around py-3">
-            <a href="/"><img class="navlogo" src="{{asset('img/LOGO_AMAZEN-1.avif')}}" alt="logo"></a>
+            <a href="{{ route('homepage') }}"><img class="navlogo" src="{{asset('img/LOGO_AMAZEN-1.avif')}}" alt="logo"></a>
             <div class="col-md-3">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -54,7 +54,8 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6 mb-4">
-                                                                    <select class="select">
+                                                                    <label for="country"></label>
+                                                                    <select class="select" name="country" id="country">
                                                                         <option value="1">Pays</option>
                                                                         <option value="2">France</option>
                                                                         <option value="3">Belgique</option>
@@ -106,7 +107,7 @@
                        aria-label="Search">
             </form>
             <div class="col-md-3 text-end">
-                <a href="cart">
+                <a href="{{ route('cart.show') }}">
                     <button type="button" class="btn"><img class="nav2" src="{{asset('img/panierpic.png')}}"
                                                            alt="iconepanier">Panier
                     </button>
@@ -128,22 +129,22 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/product">Catalogue</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Catalogue</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Mobilier Déco</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Mobilier Déco</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Mode</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Mode</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Jeux</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Jeux</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Electronique</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Electronique</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Objets cuisine</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Objets cuisine</a>
                     </li>
                 </ul>
             </div>
