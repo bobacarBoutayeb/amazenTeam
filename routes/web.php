@@ -20,25 +20,28 @@ use App\Http\Controllers;
 Route::get('/', Controllers\HomeController::class)
     ->name('homepage');
 
-Route::get('/cart', [CartController::class, "showCart"])
+Route::get('/cart', [CartController::class, 'showCart'])
     ->name('cart.show');
 
-Route::post('/order', [CartController::class, "placeOrder"])
+Route::post('/order', [CartController::class, 'placeOrder'])
     ->name('order.store');
 
 Route::prefix('products')->name('products.')->group(function () {
-    Route::get('/', [ProductController::class, "indexByName"])
+    Route::get('/', [ProductController::class, 'indexByName'])
         ->name('index-by-name');
 
-    Route::get('/asc', [ProductController::class, "indexByPrice"])
+    Route::get('/asc', [ProductController::class, 'indexByPrice'])
         ->name('index-by-price');
 
     Route::get('/{product}', [ProductController::class, 'show'])
         ->where('product', '[0-9]+')
         ->name('show')
-        ->missing(function ()
-        {
+        ->missing(function () {
             return redirect('/products');
         });
 });
 
+Route::prefix('backoffice')->name('backoffice.')->group(function () {
+    Route::get('/', [Controllers\AdminController::class, 'index'])
+        ->name('index');
+});

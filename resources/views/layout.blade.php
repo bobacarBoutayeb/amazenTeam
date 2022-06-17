@@ -6,7 +6,6 @@
 
     @yield('content')
 
-
     @include('includes.footer')
     <script src="{{ asset('js/bootstrap.js') }}"></script>
 </body>
