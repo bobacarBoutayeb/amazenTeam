@@ -1,7 +1,7 @@
 <div class="doubleheader">
     <div class="container-fluid">
         <header class="d-flex flex-wrap align-items-center justify-content-around justify-content-md-around py-3">
-            <a href="{{ route('index') }}"><img class="navlogo" src="{{asset('img/LOGO_AMAZEN-1.avif')}}" alt="logo"></a>
+            <a href="{{ route('homepage') }}"><img class="navlogo" src="{{asset('img/LOGO_AMAZEN-1.avif')}}" alt="logo"></a>
             <div class="col-md-3">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -129,22 +129,22 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('products.showByName') }}">Catalogue</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Catalogue</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('products.showByName') }}">Mobilier Déco</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Mobilier Déco</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('products.showByName') }}">Mode</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Mode</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('products.showByName') }}">Jeux</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Jeux</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('products.showByName') }}">Electronique</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Electronique</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('products.showByName') }}">Objets cuisine</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Objets cuisine</a>
                     </li>
                 </ul>
             </div>

@@ -6,18 +6,18 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function showAllByName()
+    public function indexByName()
     {
-        return view('product.show', ['products' => Product::orderBy('name')->get()]);
+        return view('product.index', ['products' => Product::orderBy('name')->get()]);
     }
 
-    public function showAllByPrice()
+    public function indexByPrice()
     {
-        return view('product.show', ['products' => Product::orderBy('price')->get()]);
+        return view('product.index', ['products' => Product::orderBy('price')->get()]);
     }
 
-    public function showOneById(int $id)
+    public function show(Product $product)
     {
-        return view('product.show_one', ['product' => Product::find($id)]);
+        return view('product.show', ['product' => $product]);
     }
 }

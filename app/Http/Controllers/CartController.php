@@ -6,6 +6,6 @@ class CartController extends Controller
 {
     public function showCart()
     {
-        return view('cart.show_all');
+        return view('cart.index');
     }
 }
