@@ -45,6 +45,21 @@ Route::prefix('products')->name('products.')->group(function () {
         ->missing(function () {
             return redirect('/products');
         });
+
+    Route::get('/{product}/edit', [ProductController::class, 'edit'])
+        ->where('product', '[0-9]+')
+        ->name('edit')
+        ->missing(function () {
+            return redirect('/products');
+        });
+
+    Route::DELETE('/{product}', [ProductController::class, 'destroy'])
+        ->where('product', '[0-9]+')
+        ->name('destroy')
+        ->missing(function () {
+            return redirect('/products');
+        });
+
 });
 
 Route::prefix('backoffice')->name('backoffice.')->group(function () {
