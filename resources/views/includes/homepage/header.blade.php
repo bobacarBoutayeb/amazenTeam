@@ -132,19 +132,19 @@
                         <a class="nav-link active" href="{{ route('products.index-by-name') }}">Catalogue</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Mobilier Déco</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-price') }}">Mobilier Déco</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Mode</a>
+                        <a class="nav-link active" href="{{ route('products.index') }}">Mode</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('products.index-by-name') }}">Jeux</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Electronique</a>
+                        <a class="nav-link active" href="{{ route('products.index-by-price') }}">Electronique</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('products.index-by-name') }}">Objets cuisine</a>
+                        <a class="nav-link active" href="{{ route('products.index') }}">Objets cuisine</a>
                     </li>
                 </ul>
             </div>

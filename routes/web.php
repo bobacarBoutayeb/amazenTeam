@@ -27,10 +27,16 @@ Route::post('/order', [CartController::class, 'placeOrder'])
     ->name('order.store');
 
 Route::prefix('products')->name('products.')->group(function () {
-    Route::get('/', [ProductController::class, 'indexByName'])
+    Route::get('/', [ProductController::class, 'index'])
+        ->name('index');
+
+    Route::get('/create', [ProductController::class, 'create'])
+        ->name('create');
+
+    Route::get('/sortedByName', [ProductController::class, 'indexByName'])
         ->name('index-by-name');
 
-    Route::get('/asc', [ProductController::class, 'indexByPrice'])
+    Route::get('/sortedByPrice', [ProductController::class, 'indexByPrice'])
         ->name('index-by-price');
 
     Route::get('/{product}', [ProductController::class, 'show'])

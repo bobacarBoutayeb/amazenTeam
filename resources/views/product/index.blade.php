@@ -1,10 +1,10 @@
 @extends('includes.homepage.layout')
-
+@section('title','Nos produits')
 @section('content')
     <div>
         <h2 class="text-center">Nos produits :</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4 mb-5" id="products">
-            @foreach($products as $product)
+            @forelse($products as $product)
                 <div class="col">
                     <div class="card d-flex justify-content-center align-items-center">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
@@ -24,7 +24,9 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <p>Pas de produit.</p>
+            @endforelse
         </div>
     </div>
 @endsection

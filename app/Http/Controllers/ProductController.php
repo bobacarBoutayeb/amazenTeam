@@ -6,6 +6,21 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    public function index()
+    {
+        return view('product.index', ['products' => Product::all()]);
+    }
+
+    public function create()
+    {
+
+    }
+
+    public function store(Request $request)
+    {
+
+    }
+
     public function indexByName()
     {
         return view('product.index', ['products' => Product::orderBy('name')->get()]);
@@ -19,5 +34,20 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('product.show', ['product' => $product]);
+    }
+
+    public function edit(Product $product)
+    {
+
+    }
+
+    public function update(Request $request, Product $product)
+    {
+
+    }
+
+    public function destroy(Product $product)
+    {
+
     }
 }
