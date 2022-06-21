@@ -33,6 +33,9 @@ Route::prefix('products')->name('products.')->group(function () {
     Route::get('/create', [ProductController::class, 'create'])
         ->name('create');
 
+    Route::post('/', [ProductController::class, 'store'])
+        ->name('store');
+
     Route::get('/sortedByName', [ProductController::class, 'indexByName'])
         ->name('index-by-name');
 
@@ -49,6 +52,13 @@ Route::prefix('products')->name('products.')->group(function () {
     Route::get('/{product}/edit', [ProductController::class, 'edit'])
         ->where('product', '[0-9]+')
         ->name('edit')
+        ->missing(function () {
+            return redirect('/products');
+        });
+
+    Route::match(['put', 'patch'],'/{product}', [ProductController::class, 'update'])
+        ->where('product', '[0-9]+')
+        ->name('update')
         ->missing(function () {
             return redirect('/products');
         });

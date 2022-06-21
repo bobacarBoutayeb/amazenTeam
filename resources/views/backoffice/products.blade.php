@@ -45,7 +45,7 @@
                     <td>{{ $product->weight /1000}}</td>
                     <td>{{ Str::limit($product->url_image,20) }}</td>
                     <td>
-                        <div class="col-12 d-flex justify-content-around align-self-center my-2">
+                        <div class="col-12 d-flex justify-content-around align-self-center">
                             <a href="{{ route('products.edit', ['product' => $product]) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="brown"
                                      class="bi bi-pencil" viewBox="0 0 16 16">
