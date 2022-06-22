@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="fr">
 @include('includes.backoffice.head')
 
 <body>
@@ -9,8 +11,6 @@
         @include('includes.backoffice.sidebar')
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             @include('backoffice.dashboard')
-            @include('backoffice.products')
-
         </main>
         @yield('content')
     </div>

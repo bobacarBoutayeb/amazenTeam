@@ -4,7 +4,7 @@
 @section('content')
     <div class="d-flex justify-content-center">
         @section('title', 'Créer un produit :')
-        <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('backoffice.products.store') }}" enctype="multipart/form-data">
 
             <!-- Le token CSRF -->
             @csrf

@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('backoffice.index') }}">
+                <a class="nav-link" href="{{ route('backoffice.products.index') }}">
                     <span data-feather="shopping-cart"></span>
                     Produits
                 </a>

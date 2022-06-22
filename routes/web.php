@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackofficeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -30,12 +31,6 @@ Route::prefix('products')->name('products.')->group(function () {
     Route::get('/', [ProductController::class, 'index'])
         ->name('index');
 
-    Route::get('/create', [ProductController::class, 'create'])
-        ->name('create');
-
-    Route::post('/', [ProductController::class, 'store'])
-        ->name('store');
-
     Route::get('/sortedByName', [ProductController::class, 'indexByName'])
         ->name('index-by-name');
 
@@ -48,33 +43,49 @@ Route::prefix('products')->name('products.')->group(function () {
         ->missing(function () {
             return redirect('/products');
         });
-
-    Route::get('/{product}/edit', [ProductController::class, 'edit'])
-        ->where('product', '[0-9]+')
-        ->name('edit')
-        ->missing(function () {
-            return redirect('/products');
-        });
-
-    Route::match(['put', 'patch'],'/{product}', [ProductController::class, 'update'])
-        ->where('product', '[0-9]+')
-        ->name('update')
-        ->missing(function () {
-            return redirect('/products');
-        });
-
-    Route::DELETE('/{product}', [ProductController::class, 'destroy'])
-        ->where('product', '[0-9]+')
-        ->name('destroy')
-        ->missing(function () {
-            return redirect('/products');
-        });
-
 });
 
 Route::prefix('backoffice')->name('backoffice.')->group(function () {
-    Route::get('/', [Controllers\BackofficeController::class, 'homepage'])
+    Route::get('/', [BackofficeController::class, 'homepage'])
         ->name('homepage');
-    Route::get('/products', [Controllers\BackofficeController::class, 'index'])
-        ->name('index');
+
+    Route::prefix('/products')->name('products.')->group(function () {
+        Route::get('/', [BackofficeController::class, 'index'])
+            ->name('index');
+
+        Route::get('/create', [BackofficeController::class, 'create'])
+            ->name('create');
+
+        Route::post('/', [BackofficeController::class, 'store'])
+            ->name('store');
+
+        Route::get('/{product}', [BackofficeController::class, 'show'])
+            ->where('product', '[0-9]+')
+            ->name('show')
+            ->missing(function () {
+                return redirect('/products');
+            });
+
+        Route::get('/{product}/edit', [BackofficeController::class, 'edit'])
+            ->where('product', '[0-9]+')
+            ->name('edit')
+            ->missing(function () {
+                return redirect('/products');
+            });
+
+        Route::match(['put', 'patch'], '/{product}', [BackofficeController::class, 'update'])
+            ->where('product', '[0-9]+')
+            ->name('update')
+            ->missing(function () {
+                return redirect('/products');
+            });
+
+        Route::DELETE('/{product}', [BackofficeController::class, 'destroy'])
+            ->where('product', '[0-9]+')
+            ->name('destroy')
+            ->missing(function () {
+                return redirect('/products');
+            });
+
+    });
 });
