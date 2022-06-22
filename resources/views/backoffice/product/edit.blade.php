@@ -1,5 +1,5 @@
 {{-- views/product/edit.blade.php --}}
-@extends('includes.homepage.layout')
+@extends('backoffice.layout')
 
 @if(isset($product))
     @section('title', 'Editer le produit : ' . $product->name)
@@ -8,140 +8,200 @@
 @endif
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div class="table-responsive">
+        @isset($product)
+            <h2>Edition du produit :</h2>
+        @endisset
 
-        @if(isset($product))
+        @empty($product)
+            <h2>Ajout d'un produit :</h2>
+        @endempty
 
-            <form method="POST" action="{{ route('backoffice.products.update', $product) }}">
-                <!-- <input type="hidden" name="_method" value="PUT"> -->
-                @method('PUT')
+        <div class="d-flex justify-content-center row row-cols-1 row-cols-md-3 g-4 mb-5">
+            <div class="col">
+                <div class="card text-center">
+                    <div class="card-body">
+        @isset($product)
 
-        @else
+                            <form method="POST" action="{{ route('backoffice.products.update', $product) }}">
+    <!-- <input type="hidden" name="_method" value="PUT"> -->
+                                @method('PUT')
 
-            <form method="POST" action="{{ route('backoffice.products.store') }}">
+                                @endisset
 
-        @endif
+                                @empty($product)
+                                    <form method="POST" action="{{ route('backoffice.products.store') }}">
 
-{{--            //TODO Ajouter le drag and drop pour les images--}}
-{{--            //<form method="POST" action="{{ route('backoffice.products.store') }}" enctype="multipart/form-data">--}}
+                            @endempty
 
-            <!-- Le token CSRF -->
-            @csrf
-            <p>
-                <label for="name">Nom :</label><br/>
+                                        {{--    //TODO Ajouter le drag and drop pour les images--}}
+                                        {{--    //<form method="POST" action="{{ route('backoffice.products.store') }}" enctype="multipart/form-data">--}}
 
-                <!-- S'il y a un $post->name, on complète la valeur de l'input -->
-                <input type="text" name="name" value="{{ isset($product->name) ? $product->name : old('name') }}" id="name" placeholder="Le nom du produit">
+                                        <!-- Le token CSRF -->
+                                        @csrf
+                                        <p>
+                                <label for="name" class="h5">Nom :</label><br/>
 
-                <!-- Le message d'erreur pour "title" -->
-            @error("name")
-            <div>{{ $message }}</div>
-            @enderror
-            </p>
+                                            <!-- S'il y a un $post->name, on complète la valeur de l'input -->
+                                <input type="text" name="name"
+                                       value="{{ isset($product) ? $product->name : old('name') }}"
+                                       id="name" placeholder="Le nom du produit">
 
-            <p>
-                <label for="description">Description :</label><br/>
+                                            <!-- Le message d'erreur pour "title" -->
+                                        @error("name")
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                            </p>
 
-                <!-- S'il y a un $post->description, on complète la valeur de l'input -->
-                <textarea name="description" id="description" cols="30" rows="10" placeholder="La description du produit">{{ isset($product->description) ? $product->description : old('description') }}</textarea>
+                                        <p>
+                                <label for="description" class="h5">Description :</label><br/>
 
-                <!-- Le message d'erreur pour "description" -->
-            @error("description")
-            <div>{{ $message }}</div>
-            @enderror
-            </p>
+                                            <!-- S'il y a un $post->description, on complète la valeur de l'input -->
+                                <textarea name="description" id="description" cols="30" rows="10"
+                                          placeholder="La description du produit">{{ isset($product) ? $product->description : old('description') }}</textarea>
 
-            <p>
-                <label for="price">Prix (en centimes):</label><br/>
+                                            <!-- Le message d'erreur pour "description" -->
+                                        @error("description")
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                            </p>
 
-                <!-- S'il y a un $post->price, on complète la valeur de l'input -->
-                <input type="number" name="price" value="{{ isset($product->price) ? $product->price : old('price') }}" id="price" placeholder="Le prix du produit">
+                                        <p>
+                                <label for="price" class="h5">Prix (en centimes):</label><br/>
 
-                <!-- Le message d'erreur pour "price" -->
-            @error("price")
-            <div>{{ $message }}</div>
-            @enderror
-            </p>
+                                            <!-- S'il y a un $post->price, on complète la valeur de l'input -->
+                                <input type="number" name="price"
+                                       value="{{ isset($product) ? $product->price : old('price') }}" id="price"
+                                       placeholder="Le prix du produit">
 
-            <p>
-                <label for="discount">Discount :</label><br/>
+                                            <!-- Le message d'erreur pour "price" -->
+                                        @error("price")
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                            </p>
 
-                <!-- S'il y a un $post->discount, on complète la valeur de l'input -->
-                <input type="number" name="discount" value="{{ isset($product->discount) ? $product->discount : old('discount') }}" id="discount" placeholder="Le discount du produit">
+                                        <p>
+                                <label for="discount" class="h5">Discount :</label><br/>
 
-                <!-- Le message d'erreur pour "discount" -->
-            @error("discount")
-            <div>{{ $message }}</div>
-            @enderror
-            </p>
+                                            <!-- S'il y a un $post->discount, on complète la valeur de l'input -->
+                                <input type="number" name="discount"
+                                       value="{{ isset($product) ? $product->discount : old('discount') }}"
+                                       id="discount"
+                                       placeholder="Le discount du produit">
 
-            <p>
-                <label for="weight">Poids (en gramme) :</label><br/>
+                                            <!-- Le message d'erreur pour "discount" -->
+                                        @error("discount")
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                            </p>
 
-                <!-- S'il y a un $post->weight, on complète la valeur de l'input -->
-                <input type="number" name="weight" value="{{ isset($product->weight) ? $product->weight : old('weight') }}" id="weight" placeholder="Le poids du produit">
+                                        <p>
+                                <label for="weight" class="h5">Poids (en gramme) :</label><br/>
 
-                <!-- Le message d'erreur pour "weight" -->
-            @error("weight")
-            <div>{{ $message }}</div>
-            @enderror
-            </p>
+                                            <!-- S'il y a un $post->weight, on complète la valeur de l'input -->
+                                <input type="number" name="weight"
+                                       value="{{ isset($product) ? $product->weight : old('weight') }}" id="weight"
+                                       placeholder="Le poids du produit">
 
-            <p>
-                <label for="url_image">Url image :</label><br/>
+                                            <!-- Le message d'erreur pour "weight" -->
+                                        @error("weight")
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                            </p>
 
-                <!-- S'il y a un $post->url_image, on complète la valeur de l'input -->
-                <input type="text" name="url_image" value="{{ isset($product->url_image) ? $product->url_image : old('url_image') }}" id="url_image" placeholder="L'url de l'image du produit">
+                                        <p>
+                                <label for="url_image" class="h5">Url image :</label><br/>
 
-                <!-- Le message d'erreur pour "url_image" -->
-            @error("url_image")
-            <div>{{ $message }}</div>
-            @enderror
-            </p>
+                                            <!-- S'il y a un $post->url_image, on complète la valeur de l'input -->
+                                <input type="text" name="url_image"
+                                       value="{{ isset($product) ? $product->url_image : old('url_image') }}"
+                                       id="url_image"
+                                       placeholder="L'url de l'image du produit">
 
-            <p>
-                <label for="quantity">Quantité :</label><br/>
+                                            <!-- Le message d'erreur pour "url_image" -->
+                                        @error("url_image")
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                            </p>
 
-                <!-- S'il y a un $post->quantity, on complète la valeur de l'input -->
-                <input  type="number" name="quantity" value="{{ isset($product->quantity) ? $product->quantity : old('quantity') }}" id="quantity" placeholder="La quantité du produit">
+                                        <p>
+                                <label for="quantity" class="h5">Quantité :</label><br/>
 
-                <!-- Le message d'erreur pour "quantity" -->
-            @error("quantity")
-            <div>{{ $message }}</div>
-            @enderror
-            </p>
+                                            <!-- S'il y a un $post->quantity, on complète la valeur de l'input -->
+                                <input type="number" name="quantity"
+                                       value="{{ isset($product) ? $product->quantity : old('quantity') }}"
+                                       id="quantity"
+                                       placeholder="La quantité du produit">
 
-            <p>
-                <label for="available">Disponible :</label><br/>
-                <input type="radio" name="availability" value="1" id="available" {{ $product->available ? "checked" : old('availablility') }}>
-                <label for="available">Oui</label><br/>
-                <input type="radio" name="availability" value="0" id="unavailable" {{ !$product->available ? "checked" : old('availablility') }}>
-                <label for="unavailable">Non</label>
-                <!-- Le message d'erreur pour "availability" -->
-            @error("available")
-            <div>{{ $message }}</div>
-            @enderror
-            </p>
+                                            <!-- Le message d'erreur pour "quantity" -->
+                                        @error("quantity")
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                            </p>
 
-            <p>
-                <label for="category">Catégorie :</label><br/>
-                <select name="categories_id" id="category">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-{{--                    @foreach($categories as $category)--}}
-{{--                        <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
-{{--                    @endforeach--}}
-                </select>
+                                        <p>
+                                <label for="stock" class="h5">Disponible :</label><br/>
+                                            @isset($product)
+                                                <input type="radio" name="available" value="1"
+                                                       id="stock" {{ $product->available ? 'checked' : old('available') }}>
+                                            @endisset
 
-                <!-- Le message d'erreur pour "category_id" -->
-            @error("categories_id")
-            <div>{{ $message }}</div>
-            @enderror
-            </p>
+                                            @empty($product)
+                                                <input type="radio" name="available" value="1"
+                                                       id="stock" {{ old('available') }}>
+                                            @endempty
 
-            <input type="submit" name="valider" value="Valider">
+                                            <label for="stock">Oui</label><br/>
 
-        </form>
-    </div>
+                                            @isset($product)
+                                                <input type="radio" name="available" value="0"
+                                                       id="nostock" {{ !$product->available ? "checked" : old('available') }}>
+                                            @endisset
+
+                                            @empty($product)
+                                                <input type="radio" name="available" value="0"
+                                                       id="nostock" {{ old('available') }}>
+                                            @endempty
+
+                                            <label for="nostock">Non</label>
+
+                                            <!-- Le message d'erreur pour "availability" -->
+                                        @error("available")
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                            </p>
+
+                                        <p>
+                                <label for="category" class="h5">Catégorie :</label><br/>
+                                <select name="categories_id" id="category">
+
+                                    @isset($product)
+                                        <option value="{{ $product->categories_id }}"
+                                                selected>{{ $product->categories_id }} {{ old('available') }}</option>
+                                    @endisset
+
+                                    @empty($product)
+                                        <option selected {{ old('available') }}>Choisir</option>
+                                    @endempty
+
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+
+                                </select>
+
+                                            <!-- Le message d'erreur pour "category_id" -->
+                                        @error("categories_id")
+                                        <div>{{ $message }}</div>
+                                        @enderror
+                            </p>
+
+                                        <input type="submit" name="valider" value="Valider">
+
+                        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
 @endsection
