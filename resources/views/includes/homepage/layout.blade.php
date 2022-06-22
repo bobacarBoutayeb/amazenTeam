@@ -11,5 +11,7 @@
 
 @include('includes.homepage.footer')
 <script src="{{ asset('js/bootstrap.js') }}"></script>
+{{--//TODO Input size auto--}}
+{{--<script src="{{ asset('js/input.js') }}"></script>--}}
 </body>
 </html>

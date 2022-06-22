@@ -70,7 +70,7 @@ Route::prefix('backoffice')->name('backoffice.')->group(function () {
             ->where('product', '[0-9]+')
             ->name('edit')
             ->missing(function () {
-                return redirect('/products');
+                return redirect('/backoffice/products');
             });
 
         Route::match(['put', 'patch'], '/{product}', [BackofficeController::class, 'update'])
