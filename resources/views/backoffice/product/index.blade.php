@@ -2,7 +2,6 @@
 @extends('backoffice.layout')
 
 @section('content')
-@dd($products)
     <div class="table-responsive">
         <h2>Liste des produits :
             <span>

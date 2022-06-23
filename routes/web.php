@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BackofficeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
@@ -43,6 +44,11 @@ Route::prefix('products')->name('products.')->group(function () {
         ->missing(function () {
             return redirect('/products');
         });
+});
+
+Route::prefix('categories')->name('categories.')->group(function () {
+    Route::get('/', [CategorieController::class, 'index'])
+        ->name('index');
 });
 
 Route::prefix('backoffice')->name('backoffice.')->group(function () {

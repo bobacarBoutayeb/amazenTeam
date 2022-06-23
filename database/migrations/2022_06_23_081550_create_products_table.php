@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('weight')->nullable(false);
             $table->string('url_image')->nullable();
             $table->unsignedInteger('quantity')->nullable();
-            $table->tinyInteger('available')->nullable(false);
+            $table->tinyInteger('available')->nullable();
             $table->unsignedInteger('categories_id');
             
             $table->foreign('categories_id', 'fk_products_categories1')->references('id')->on('categories')->onDelete('restrict')->onUpdate('restrict');

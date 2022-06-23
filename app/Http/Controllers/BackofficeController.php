@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Categorie;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -19,7 +19,7 @@ class BackofficeController extends Controller
 
     public function create()
     {
-        return view('backoffice.product.edit');
+        return view('backoffice.product.edit', ['categories' => Categorie::all()]);
     }
 
     public function store(Request $request)
@@ -28,13 +28,13 @@ class BackofficeController extends Controller
         $this->validate($request, [
             'name' => 'bail|required|string|max:255',
             'description' => 'bail|required',
-            'price' => 'bail|required|numeric',
+            'price' => 'bail|required|numeric|gt:0',
             'discount' => 'bail|nullable|numeric',
             'weight' => 'bail|required|numeric',
             'url_image' => 'bail|nullable|url',
             'quantity' => 'bail|required|numeric',
             'available' => 'bail|required|boolean',
-            'categories_id' => 'bail|required|numeric',
+            'categorie_id' => 'bail|required|numeric',
         ]);
 
         //TODO
@@ -51,7 +51,7 @@ class BackofficeController extends Controller
             'url_image' => $request->url_image,
             'quantity' => $request->quantity,
             'available' => $request->availability,
-            'categories_id' => $request->categories_id,
+            'categorie_id' => $request->categorie_id,
         ]);
 
         // 4. On retourne vers tous les produits : route("products.index")
@@ -63,12 +63,12 @@ class BackofficeController extends Controller
         return view('backoffice.product.show', ['product' => $product]);
     }
 
-    public function edit(Product $product, Category $category)
+    public function edit(Product $product)
     {
         return view('backoffice.product.edit', [
             'product' => $product,
-            'category' => $category,
-        ]);
+            'categories' => Categorie::all(),
+            ]);
     }
 
     public function update(Request $request, Product $product)
@@ -79,13 +79,13 @@ class BackofficeController extends Controller
         $rules = [
             'name' => 'bail|required|string|max:255',
             'description' => 'bail|required',
-            'price' => 'bail|required|numeric',
-            'discount' => 'bail|nullable|numeric',
-            'weight' => 'bail|required|numeric',
+            'price' => 'bail|required|numeric|gt:0',
+            'discount' => 'bail|nullable|numeric|gte:0',
+            'weight' => 'bail|required|numeric|gt:0',
             'url_image' => 'bail|nullable|url',
-            'quantity' => 'bail|required|numeric',
+            'quantity' => 'bail|required|numeric|gte:0',
             'available' => 'bail|required|boolean',
-            'categories_id' => 'bail|required|numeric',
+            'categorie_id' => 'bail|required|numeric',
         ];
 
         //TODO Gestion image
@@ -116,7 +116,7 @@ class BackofficeController extends Controller
             'url_image' => $request->url_image,
             'quantity' => $request->quantity,
             'available' => $request->available,
-            'categories_id' => $request->categories_id,
+            'categorie_id' => $request->categorie_id,
 //            "picture" => isset($chemin_image) ? $chemin_image : $product->picture,
         ]);
 

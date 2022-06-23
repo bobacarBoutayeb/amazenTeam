@@ -12,10 +12,11 @@ class Product extends Model
      * @var bool
      */
     public $timestamps = false;
-    protected $fillable = ['name', 'description', 'price', 'discount', 'weight', 'url_image', 'quantity', 'available', 'categories_id'];
+//    protected $guarded = [];
+    protected $fillable = ['name', 'description', 'price', 'discount', 'weight', 'url_image', 'quantity', 'available', 'categorie_id'];
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Categorie::class);
     }
 }

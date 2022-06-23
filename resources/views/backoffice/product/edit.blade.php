@@ -8,6 +8,7 @@
 @endif
 
 @section('content')
+
     <div class="table-responsive">
         @isset($product)
             <h2>Edition du produit :</h2>
@@ -76,7 +77,7 @@
 
                                             <!-- Le message d'erreur pour "price" -->
                                         @error("price")
-                                        <div>{{ $message }}</div>
+                                        <div>{{ $message }} </div>
                                         @enderror
                             </p>
 
@@ -173,25 +174,39 @@
 
                                         <p>
                                 <label for="category" class="h5">Catégorie :</label><br/>
-                                <select name="categories_id" id="category">
+                                <select name="categorie_id" id="category">
+<option value="1">1</option>
+{{--                                    @isset($product)--}}
+{{--                                        <option value="{{ $product->categorie_id }}"--}}
+{{--                                                selected>{{ $product->categorie_id }} {{ old('available') }}</option>--}}
+{{--                                    @endisset--}}
 
-                                    @isset($product)
-                                        <option value="{{ $product->categories_id }}"
-                                                selected>{{ $product->categories_id }} {{ old('available') }}</option>
-                                    @endisset
+{{--                                    @empty($product)--}}
+{{--                                        <option selected {{ old('available') }}>Choisir</option>--}}
+{{--                                    @endempty--}}
 
-                                    @empty($product)
-                                        <option selected {{ old('available') }}>Choisir</option>
-                                    @endempty
+{{--                                    @isset($product)--}}
+{{--                                        @forelse($categories as $categorie)--}}
+{{--                                    <option value="{{ $categorie->id }} {{ old('categorie_id') }}"--}}
+{{--                                            @if($product->categorie_id == $categorie->id) selected @endif--}}
+{{--                                            {{ old('categorie_id') }}>{{ $categorie->id }}</option>--}}
+{{--                                        @empty--}}
+{{--                                            Pas de catégorie--}}
+{{--                                        @endforelse--}}
+{{--                                            @endisset--}}
 
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+{{--                                        @empty($product)--}}
+{{--                                        @forelse($categories as $categorie)--}}
+{{--                                            <option value="{{ $categorie->id }} {{ old('categorie_id') }} @if(old('categorie_id') == $categorie->id) selected @endif">{{ $categorie->id }}</option>--}}
+{{--                                        @empty--}}
+{{--                                            Pas de catégorie--}}
+{{--                                        @endforelse--}}
+{{--                                    @endempty--}}
+
 
                                 </select>
-
                                             <!-- Le message d'erreur pour "category_id" -->
-                                        @error("categories_id")
+                                        @error("categorie_id")
                                         <div>{{ $message }}</div>
                                         @enderror
                             </p>
