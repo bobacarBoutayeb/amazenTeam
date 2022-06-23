@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -62,9 +63,12 @@ class BackofficeController extends Controller
         return view('backoffice.product.show', ['product' => $product]);
     }
 
-    public function edit(Product $product)
+    public function edit(Product $product, Category $category)
     {
-        return view('backoffice.product.edit', ['product' => $product]);
+        return view('backoffice.product.edit', [
+            'product' => $product,
+            'category' => $category,
+        ]);
     }
 
     public function update(Request $request, Product $product)

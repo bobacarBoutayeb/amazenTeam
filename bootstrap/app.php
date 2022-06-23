@@ -41,6 +41,8 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->register(\LaravelMigrationGenerator\LaravelMigrationGeneratorProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
