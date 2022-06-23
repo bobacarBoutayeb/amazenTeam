@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('includes.homepage.layout')
 
 @section('content')
 
-<h1> PANIER </h1>
+    <h1> PANIER </h1>
 
 @endsection

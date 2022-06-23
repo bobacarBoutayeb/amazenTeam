@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+@include('includes.homepage.head')
+
+<body>
+
+@include('includes.homepage.header')
+
+@yield('content')
+
+@include('includes.homepage.footer')
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+{{--//TODO Input size auto--}}
+{{--<script src="{{ asset('js/input.js') }}"></script>--}}
+</body>
+</html>
